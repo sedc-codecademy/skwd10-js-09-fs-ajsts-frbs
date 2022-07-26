@@ -1,1 +1,3 @@
-# skwd10-js-09-fs-ajsts-frbs
+# Public repo for 9-th subject - Full-stack Development with Angular and Firebase
+
+
