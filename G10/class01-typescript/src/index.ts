@@ -194,8 +194,12 @@ class Person {
     this.status = status;
   }
 
+  private changeStatus() {
+    this.status = !this.status;
+  }
+
   getCountry() {
-    return this.country;
+    return this._country;
   }
 
   get country(): string {
@@ -209,6 +213,8 @@ class Person {
 }
 
 const student: Person = new Person("Dimitar Eftimov", true);
+
+console.log(student.getCountry());
 
 student.country = "MKD";
 
@@ -255,3 +261,54 @@ const car: Vehicle = new Vehicle();
 
 console.log(car.getSpeed());
 car.changeGear(2);
+
+//Inheritance
+/*
+Classes can also extend other classes. A feature of object oriented programming called inheritance.
+This example shows the most basic inheritance feature: classes inherit properties and methods from base classes.
+ Derived classes are often called subclasses or children, and base classes are often called superclasses or parents.
+*/
+
+/*
+Each derived class that contains a constructor function must call super() which will execute the constructor of the base class. 
+What’s more, before we ever access a property on this in a constructor body, we have to call super(). This is an important rule that TypeScript will enforce.
+*/
+
+class Parent {
+  // house: boolean;
+  // lastName: string;
+  hasCar = false;
+
+  // constructor(house: boolean, lastName: string) {
+  //   this.house = house;
+  //   this.lastName = lastName;
+  // }
+  constructor(public house: boolean, public lastName: string) {}
+
+  buyCar() {
+    console.log("buy car called");
+    this.hasCar = true;
+  }
+}
+
+interface Job {
+  getAJob(): boolean;
+}
+
+class Child extends Parent implements Job {
+  name: string;
+
+  constructor(house: boolean, lastName: string, name: string) {
+    super(house, lastName);
+    this.name = name;
+  }
+
+  getAJob(): boolean {
+    return true;
+  }
+}
+
+const kid: Child = new Child(false, "Johnson", "Eddy");
+
+console.log(kid.getAJob());
+console.log(kid.buyCar());
