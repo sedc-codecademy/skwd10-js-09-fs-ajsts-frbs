@@ -1,0 +1,51 @@
+<h1>Our first Angular App</h1>
+<p>Learning Angular is easy after a while</p>
+
+<div>
+  <h1>String Interpolation</h1>
+  <h2>{{ title }}</h2>
+  <p>{{ description }}</p>
+  <p>Number of classes is: {{ numberOfClasses }}</p>
+
+  <h4 class="heading">First Name: {{ personOne.firstName }}</h4>
+  <h4 class="heading">Last Name: {{ personOne.lastName }}</h4>
+  <h4 class="heading">Age: {{ personOne.age }}</h4>
+  <h4 class="heading">Pet Name: {{ personOne.petName }}</h4>
+
+  <p>
+    <strong>{{ printPersonInfo() }}</strong>
+  </p>
+
+  <p>
+    <strong>{{ printFullName("Boris", "Borisovski") }}</strong>
+  </p>
+  <p>
+    <strong>{{ printFullName("Ivan", "Jamandilovski") }}</strong>
+  </p>
+  <p>
+    <strong>{{
+      printFullName(personOne.firstName, personOne.lastName)
+    }}</strong>
+  </p>
+</div>
+
+<div>
+  <h1>Property Binding</h1>
+  <h2 [innerText]="title + ' , this is extending the title.'"></h2>
+  <p [innerText]="description"></p>
+  <img [src]="imgSrc" />
+  <button [disabled]="isBtnDisabled" type="button">I am disabled</button>
+</div>
+
+<div>
+  <h1>Event Binding</h1>
+  <h2>Current Framework: {{ frameworkStudied }}</h2>
+  <button (click)="onFrameworkChange()" type="button">Change Framework</button>
+
+  <input (keyup)="onInputValueChange($event)" />
+  <p>
+    <strong>{{ inputValue }}</strong>
+  </p>
+</div>
+
+<app-pets></app-pets>
