@@ -41,33 +41,33 @@ Using enums can make it easier to document intent, or create a set of distinct c
 */
 var Action;
 (function (Action) {
-  Action["FORWARD"] = "W";
-  Action["BACKWARD"] = "S";
-  Action["LEFT"] = "A";
-  Action["RIGHT"] = "D";
+    Action["FORWARD"] = "W";
+    Action["BACKWARD"] = "S";
+    Action["LEFT"] = "A";
+    Action["RIGHT"] = "D";
 })(Action || (Action = {}));
 var CountryCodes;
 (function (CountryCodes) {
-  CountryCodes["USA"] = "USA";
-  CountryCodes["GBR"] = "Great Britain";
-  CountryCodes["ARG"] = "Argentina";
+    CountryCodes["USA"] = "USA";
+    CountryCodes["GBR"] = "Great Britain";
+    CountryCodes["ARG"] = "Argentina";
 })(CountryCodes || (CountryCodes = {}));
 console.log(Action.FORWARD);
 console.log(Action.LEFT);
 console.log(Action.RIGHT);
 const userOne = {
-  id: 1,
-  name: "Boris Borisovski",
-  age: 30,
-  country: "Macedonia",
-  hobby: "Gaming",
+    id: 1,
+    name: "Boris Borisovski",
+    age: 30,
+    country: "Macedonia",
+    hobby: "Gaming",
 };
 const userTwo = {
-  id: 2,
-  name: "Ivan Janmandilovski",
-  age: 33,
-  country: "Macedonia",
-  hobby: "Death Metal Player",
+    id: 2,
+    name: "Ivan Janmandilovski",
+    age: 33,
+    country: "Macedonia",
+    hobby: "Death Metal Player",
 };
 //Type Assertion
 /*
@@ -92,13 +92,13 @@ We can model this in TypeScript by marking the parameter as optional with ?
 It is also a good practice to always specify the return type of the value that the function will produce.
 */
 function multiply(x, y) {
-  return `${x} x ${y} = ${x * y}`;
+    return `${x} x ${y} = ${x * y}`;
 }
 multiply(14, 25);
 const messageOne = {
-  id: 100,
-  text: "Hello Angular!",
-  sender: "Ivan",
+    id: 100,
+    text: "Hello Angular!",
+    sender: "Ivan",
 };
 const addTwoNumbers = (x, y) => x + y;
 const divideTwoNumbers = (x, y) => x / y;
@@ -124,23 +124,27 @@ There are two ways of accessing private fields/properties of a class.
 2. Rely on Typescripts getter/setter syntax. Example get id(): number {return this._id};
 */
 class Person {
-  constructor(name, status) {
-    this._country = "USA";
-    this.name = name;
-    this.status = status;
-  }
-  getCountry() {
-    return this.country;
-  }
-  get country() {
-    return this._country;
-  }
-  set country(value) {
-    console.log("Value Sets");
-    this._country = value;
-  }
+    constructor(name, status) {
+        this._country = "USA";
+        this.name = name;
+        this.status = status;
+    }
+    changeStatus() {
+        this.status = !this.status;
+    }
+    getCountry() {
+        return this._country;
+    }
+    get country() {
+        return this._country;
+    }
+    set country(value) {
+        console.log("Value Sets");
+        this._country = value;
+    }
 }
 const student = new Person("Dimitar Eftimov", true);
+console.log(student.getCountry());
 student.country = "MKD";
 console.log(student.country);
 /*
@@ -149,28 +153,64 @@ Implementing an interface means that the class signs a contract that it will imp
 and properties that were defined in the interface.
 */
 class Human {
-  constructor(id, name) {
-    this.id = id;
-    this.name = name;
-    this.greeting = `Hi, my name is ${name}`;
-  }
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        this.greeting = `Hi, my name is ${name}`;
+    }
 }
 const personOne = new Human(1, "Homo Sapiens");
 class Vehicle {
-  constructor() {
-    this.currentSpeed = 50;
-    this.currentGear = 1;
-  }
-
-  getSpeed() {
-    return this.currentSpeed;
-  }
-  changeGear(newGear) {
-    this.currentGear = newGear;
-  }
+    constructor() {
+        this.currentSpeed = 50;
+        this.currentGear = 1;
+    }
+    getSpeed() {
+        return this.currentSpeed;
+    }
+    changeGear(newGear) {
+        this.currentGear = newGear;
+    }
 }
-
 const car = new Vehicle();
-
 console.log(car.getSpeed());
 car.changeGear(2);
+//Inheritance
+/*
+Classes can also extend other classes. A feature of object oriented programming called inheritance.
+This example shows the most basic inheritance feature: classes inherit properties and methods from base classes.
+ Derived classes are often called subclasses or children, and base classes are often called superclasses or parents.
+*/
+/*
+Each derived class that contains a constructor function must call super() which will execute the constructor of the base class.
+What’s more, before we ever access a property on this in a constructor body, we have to call super(). This is an important rule that TypeScript will enforce.
+*/
+class Parent {
+    // constructor(house: boolean, lastName: string) {
+    //   this.house = house;
+    //   this.lastName = lastName;
+    // }
+    constructor(house, lastName) {
+        this.house = house;
+        this.lastName = lastName;
+        // house: boolean;
+        // lastName: string;
+        this.hasCar = false;
+    }
+    buyCar() {
+        console.log("buy car called");
+        this.hasCar = true;
+    }
+}
+class Child extends Parent {
+    constructor(house, lastName, name) {
+        super(house, lastName);
+        this.name = name;
+    }
+    getAJob() {
+        return true;
+    }
+}
+const kid = new Child(false, "Johnson", "Eddy");
+console.log(kid.getAJob());
+console.log(kid.buyCar());
