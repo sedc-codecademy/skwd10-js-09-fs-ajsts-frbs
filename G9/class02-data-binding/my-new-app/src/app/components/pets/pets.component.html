@@ -1,0 +1,26 @@
+<div class="pets">
+  <h1>Pets Component</h1>
+  <h2>Title from Child: {{ titleReceive }}</h2>
+  <hr />
+  <!-- Pet 1 -->
+  <app-pet
+    [titleFromParent]="pet.title"
+    [type]="pet.type"
+    (addLike)="onAddLike()"
+  ></app-pet>
+  <!-- Pet 2 -->
+  <app-pet
+    [titleFromParent]="pet2.title"
+    [type]="pet2.type"
+    (addLike)="onAddLike()"
+  ></app-pet>
+  <!-- Pet 3 -->
+  <app-pet
+    [titleFromParent]="petFromParent.title"
+    [type]="petFromParent.type"
+    (addLike)="onAddLike()"
+  ></app-pet>
+  <button class="button" (click)="sendTitleToParent()">
+    Send Title To Parent
+  </button>
+</div>

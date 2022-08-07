@@ -1,0 +1,43 @@
+<app-header (changeNav)="onChangeNav($event)"></app-header>
+<h1>Hello World</h1>
+<h2>{{ title }}</h2>
+<p class="paragraph">Our first Angular Class</p>
+
+<!-- String Interpolation {{}} -->
+
+<h3>Our first class is {{ classOfToday }}</h3>
+<h3>Number of classes: {{ numberOfClasses }}</h3>
+<!-- This will not work -->
+<!-- <div>
+  {{ person }}
+</div> -->
+<div>{{ returnFullName(person) }}</div>
+<div>{{ returnFullName(person2) }}</div>
+
+<!-- Property Binding -->
+<div>
+  <h1>Propety Binding</h1>
+  <h2 [innerText]="returnFullName(person)">Testing Angular</h2>
+  <img [src]="srcToAngularLogo" [alt]="altForAngularLogo" />
+</div>
+
+<!-- Event Binding -->
+<div>
+  <h2>Our Class Today: {{ classOfToday }}</h2>
+  <h1>Event Binding</h1>
+  <button type="button" (click)="changeSubjectName()">Change class name</button>
+</div>
+
+<div>
+  <input type="text" (keyup)="handleTextChange($event)" />
+  <p>{{ randomInputValues }}</p>
+</div>
+
+<app-pets
+  (titleToSendToParent)="onTitleReceived($event)"
+  [titleReceive]="titleForTheChild"
+  [petFromParent]="pet3"
+  (addLike)="onAddLike()"
+></app-pets>
+
+<h2>Total Likes: {{ likeSum }}👍</h2>
