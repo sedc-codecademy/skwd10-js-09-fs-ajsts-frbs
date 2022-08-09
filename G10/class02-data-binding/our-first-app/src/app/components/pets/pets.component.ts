@@ -16,4 +16,14 @@ import { Component } from '@angular/core';
 })
 export class PetsComponent {
   title: string = 'Pets Component';
+
+  parentTitle: string = 'This was sent from the parent';
+  type: string = 'Cat';
+
+  titleFromChild = '';
+
+  onTitleSent(value: string) {
+    console.log(value);
+    this.titleFromChild = value;
+  }
 }

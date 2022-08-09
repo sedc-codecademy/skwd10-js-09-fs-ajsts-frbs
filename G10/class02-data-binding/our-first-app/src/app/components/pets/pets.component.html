@@ -1,5 +1,11 @@
 <div>
   <h1>Pets Component</h1>
 
-  <app-pet></app-pet>
+  <h2>The title from the child is : {{ titleFromChild }}</h2>
+
+  <app-pet
+    [titleFromParent]="parentTitle"
+    [petType]="type"
+    (titleToParent)="onTitleSent($event)"
+  ></app-pet>
 </div>
