@@ -1,0 +1,19 @@
+.ticket {
+    width: 300px;
+    padding: 2px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.new {
+    background-color: #2ecc71;
+}
+
+.in-progress {
+    background-color: #f1c40f;
+}
+
+.done {
+    background-color: #2980b9;
+}

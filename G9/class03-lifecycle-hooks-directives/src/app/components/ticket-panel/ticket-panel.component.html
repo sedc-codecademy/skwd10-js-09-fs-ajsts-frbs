@@ -1,0 +1,84 @@
+<h2>Ticket Panel</h2>
+
+<!-- Property Binding -->
+<!-- <h3>{{ tickets[0].title }}</h3> -->
+
+<!-- Event Binding -->
+<!-- <button (click)="onTicketFinish(ticket[0])">Finish Ticket</button> -->
+
+<!-- <ticket [ticket]="tickets[0]"></ticket>
+<ticket [ticket]="tickets[1]"></ticket>
+<ticket [ticket]="tickets[2]"></ticket>
+<ticket [ticket]="tickets[3]"></ticket>
+<ticket [ticket]="tickets[4]"></ticket> -->
+
+<!-- ngFor -->
+<!-- A structural directive that renders a template for each item in a collection. The directive is placed on an element, which becomes the parent of the cloned templates. -->
+<ticket
+  *ngFor="let currentTicket of tickets"
+  [ticket]="currentTicket"
+  (emitTicket)="displayTicket($event)"
+></ticket>
+<hr />
+
+<div class="ticket-screen">
+  <!-- ngIf -->
+  <!-- A structural directive that conditionally includes a template based on the value of an expression coerced to Boolean.  -->
+  <div class="screen-card" *ngIf="!!ticketToDisplay">
+    <div class="ticket-header">
+      <h3>{{ ticketToDisplay.title }}</h3>
+    </div>
+    <div class="ticket-content">
+      <p class="ticket-text">{{ ticketToDisplay.text }}</p>
+      <p class="ticket-assignee">Assignee: {{ ticketToDisplay.assignee }}</p>
+      <div class="ticket-status">Status: {{ ticketToDisplay.status }}</div>
+    </div>
+  </div>
+</div>
+<hr />
+<!-- ngStyle -->
+<!-- An attribute directive that updates styles for the containing HTML element. Sets one or more style properties, specified as colon-separated key-value pairs. -->
+<button class="btn btn-randomizer" (click)="generateRandomColor()">
+  Randomize!
+</button>
+<p class="random-colored-text" [ngStyle]="{ color: randomColor }">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro fugit
+  reiciendis repudiandae, dolorem iusto dolorum ipsum qui cumque voluptatem
+  minima, vitae animi ducimus voluptas, unde sit expedita! Quas animi soluta
+  tempore provident, fugit cupiditate sunt cum laboriosam dolores nam aliquam
+  sed inventore repellat nisi, voluptates quos corporis, adipisci distinctio.
+  Mollitia.
+</p>
+
+<button (click)="displayStarWarsPeople()">Display Star Wars People</button>
+
+<div *ngIf="displayPeople">
+  <div class="person" *ngFor="let person, index of peopleData">
+    <!-- The <ng-container> allows us to use structural directives without any extra element, making sure that the only DOM changes being applied are those dictated by the directives themselves. -->
+      <!-- It lets us render stuff without using an HTML element, like React's <Fragment> -->
+    <ng-container *ngIf="person.films.length > 5" class="person__card">
+      <h3>{{ person.name }}</h3>
+    </ng-container>
+  </div>
+</div>
+
+<!-- ngTemplate -->
+<!-- With <ng-template>, you can define template content that is only being rendered by 
+  Angular when you, whether directly or indirectly, specifically instruct it to do so, 
+  allowing you to have full control over how and when the content is displayed. -->
+
+<div [ngTemplateOutlet]="personTemplate2"></div>
+
+<ng-template #personTemplate>
+  <ng-container>
+    <h1>Ivan Lazarevski</h1>
+    <h2>Programmer</h2>
+    <h3>Seavus ARICOMA GROUP</h3>
+  </ng-container>
+</ng-template>
+
+<ng-template #personTemplate2>
+  <h2>Programmer</h2>
+  <h3>Seavus ARICOMA GROUP</h3>
+  <h1>Ivan Lazarevski</h1>
+</ng-template>

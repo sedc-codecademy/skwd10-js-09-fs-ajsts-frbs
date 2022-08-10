@@ -1,0 +1,6 @@
+<!-- [ngClass]="{'ticket-new': isTicketNew()}" -->
+<div class="ticket" [ngClass]="ticket.status" (click)="displayTicket(ticket)">
+  <div class="ticket-header">
+    <h3 class="ticket__title">{{ ticket.title }}</h3>
+  </div>
+</div>
