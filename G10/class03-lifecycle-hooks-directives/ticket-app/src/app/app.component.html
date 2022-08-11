@@ -3,4 +3,22 @@
 </header>
 <main>
   <app-ticket-panel [tickets]="ticketList"></app-ticket-panel>
+  <div>
+    <button appHoverShadow (click)="generateRandomColor()">
+      Randomize Color!
+    </button>
+    <p
+      appHoverShadow
+      class="random-colored-text"
+      [ngStyle]="{ backgroundColor: randomColor, fontWeight: '600' }"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, nemo
+      provident. Possimus quasi laboriosam soluta necessitatibus eius eveniet
+      distinctio voluptatem ut, minima eligendi accusamus in quis reprehenderit
+      modi fugit vel! Quae tenetur culpa explicabo quos accusamus quod,
+      quibusdam beatae, fugit voluptatum rerum quo laborum molestiae. Distinctio
+      ad voluptatum alias eum beatae reiciendis? A aperiam necessitatibus
+      inventore. Commodi vitae itaque tenetur!
+    </p>
+  </div>
 </main>

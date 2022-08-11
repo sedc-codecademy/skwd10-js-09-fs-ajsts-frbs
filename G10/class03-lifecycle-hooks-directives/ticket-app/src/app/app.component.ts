@@ -10,6 +10,8 @@ import { TicketStatus } from './interfaces/ticket-status.enum';
 export class AppComponent {
   title = 'ticket-app';
 
+  randomColor: string = '#FFF';
+
   ticketList: Ticket[] = [
     {
       id: 1,
@@ -49,4 +51,12 @@ export class AppComponent {
       status: TicketStatus.DONE,
     },
   ];
+
+  generateRandomColor() {
+    const randomColorHex = Math.floor(Math.random() * 16777215).toString(16);
+
+    this.randomColor = `#${randomColorHex}`;
+
+    console.log(this.randomColor);
+  }
 }
