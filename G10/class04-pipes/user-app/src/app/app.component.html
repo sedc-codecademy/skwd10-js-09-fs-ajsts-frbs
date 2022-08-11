@@ -1,0 +1,49 @@
+<header>
+  <h1>User App</h1>
+</header>
+
+<main>
+  <div class="container">
+    <div class="form__control">
+      <input
+        type="text"
+        placeholder="filter by name..."
+        [(ngModel)]="filterValue"
+      />
+    </div>
+    <div class="users__container">
+      <div
+        appHoverShadow
+        *ngFor="let user of users | filter: filterValue"
+        class="user"
+      >
+        <div class="user__header">
+          <div class="user__id">{{ user.id }}.</div>
+          <div>
+            <div>{{ user.name | uppercase }}</div>
+            <div>{{ user.email | lowercase }}</div>
+          </div>
+        </div>
+        <div class="user__content">
+          <h3>Personal Details</h3>
+          <p>Phone: {{ user.phone }}</p>
+          <p>Website: {{ user.website }}</p>
+          <p>Birthdate: {{ user.dateOfBirth | date: "longDate" }}</p>
+          <p>Hourly Rate: {{ user.hourlyRate | currency: "EUR" }}</p>
+          <!-- {min-int-digits}.{min-decimal-digits}-{max-decimal-digits} -->
+          <p>Rating: {{ user.rating | number: "1.0-2" }}</p>
+          <p>Rating%: {{ user.rating | percent: "1.0-2" }}</p>
+          <div class="address__container" appToggleAddress>
+            <h3>Address ⬇️</h3>
+            <div class="address__details hide">
+              <p>Street: {{ user.address.street }}</p>
+              <p>Suite: {{ user.address.suite }}</p>
+              <p>City: {{ user.address.city | uppercase | shorten: 6 }}</p>
+              <p>Zipcode: {{ user.address.zipcode }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
