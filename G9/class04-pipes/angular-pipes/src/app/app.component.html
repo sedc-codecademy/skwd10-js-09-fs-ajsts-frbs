@@ -1,0 +1,73 @@
+<header>
+  <h1>User List</h1>
+</header>
+
+<main>
+  <div class="container">
+    <div class="form__control">
+      <input 
+      type="text" 
+      placeholder="Filter..." 
+      autocomplete="off" 
+      [(ngModel)]="filteredRating"
+      />
+      <!-- [(ngModel)] is a special angular syntax feature. It allows you to use two way data binding. -->
+      <!-- In this case, we are using ngModel to bind the value of the input field to a property in our component -->
+      <!-- So every time we change the input, we are directly changing the property thus triggering change detection and rerendering -->
+    </div>
+    <div class="container__wrapper">
+      <div
+        class="container__content"
+        *ngFor="let user of users | filter: +filteredRating"
+      >
+      <!-- You can use a + in front of a string to convert it to a number -->
+        <div class="user">
+          <div class="user__header">
+            <div class="user__id">{{ user.id }}</div>
+            <div>
+              <div class="user__name">{{ user.name }}</div>
+              <div class="user__email">{{ user.email | lowercase }}</div>
+            </div>
+          </div>
+          <div class="user__content">
+            <h3>Address</h3>
+            <p>Street: {{ user.address.street }}</p>
+            <p>Suite: {{ user.address.suite }}</p>
+            <p>City: {{ user.address.city | uppercase | shorten: 5 }}</p>
+            <!-- Pipes are pure functions. They take in input, transform it, and output the same thing.
+            The pipes transform the value in the template (HTML file) itself. This will allow you to change propperties to alter
+            how they are rendered but without changing the properties themselves in the component (Typescript) file.
+            Also, this works differently from using CSS because CSS doesn't change the value. This might be important for screen readers. -->
+            <p>Zipcode: {{ user.address.zipcode }}</p>
+          </div>
+          <div class="user__footer">
+            <h3>Personal Details</h3>
+            <p>Phone: {{ user.phone }}</p>
+            <p>Website: {{ user.website }}</p>
+            <!-- <p>Birthdate: {{ user.dateOfBirth | date:"short" }}</p> -->
+            <!-- <p>Birthdate: {{ user.dateOfBirth | date:"longDate" }}</p> -->
+            <p>
+              Birthdate:
+              {{ user.dateOfBirth | date: "dd.MMM.yyyy - HH:mm - zzz" }}
+            </p>
+            <!-- Some pipes take in arguments. For example, the date pipe takes in a format. This format can either be a preset
+            defined by Angular, or you can even define a custom date format yourself. -->
+            <p>Hourly Rate: {{ user.hourlyRate | currency: "EUR" }}</p>
+
+            <!-- The currency pipe takes in the Locale (currency type) but also the number of digits before or after the decimal dot.
+            This also works for the number and percent pipe as well. -->
+
+            <!-- Check out the custom shorten pipe we created for more info on how pipes work internally -->
+            <p>
+              Hourly Rate:
+              {{ user.hourlyRate | currency: "CAD":"symbol-narrow":"4.3-5" }}
+            </p>
+            <!-- {min-integer-digits}.{min-decimal-digits}-{max-decimal-digits} -->
+            <p>Rating: {{ user.rating | number: "1.0-2" }}</p>
+            <p>Rating%: {{ user.rating | percent: "1.0-2" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
