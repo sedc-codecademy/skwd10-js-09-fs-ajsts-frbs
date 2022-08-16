@@ -1,0 +1,12 @@
+<ng-container *ngIf="!!renderedTeam">
+  <p
+    [ngStyle]="{
+      backgroundColor:
+        renderedTeam.conference === 'East' ? '#2980b9' : '#c0392b'
+    }"
+    [ngClass]="renderedTeam.division"
+    class="team"
+  >
+    {{ renderedTeam.full_name }}
+  </p>
+</ng-container>

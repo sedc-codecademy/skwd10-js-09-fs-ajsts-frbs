@@ -1,0 +1,12 @@
+.team {
+  padding: 1rem;
+  width: 100px;
+}
+
+.Atlantic {
+  border: 3px dashed #1e1e1e;
+}
+
+.Southeast {
+  border: 3px dashed #ffccdd;
+}
