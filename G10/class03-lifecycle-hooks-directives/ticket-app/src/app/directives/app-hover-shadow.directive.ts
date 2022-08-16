@@ -6,6 +6,8 @@ import {
   Renderer2,
 } from '@angular/core';
 
+//*ngFor , *ngIf , [ngClass], [ngStyle]
+
 @Directive({
   selector: '[appHoverShadow]',
 })
@@ -23,6 +25,7 @@ export class AppHoverShadowDirective implements OnInit {
   @HostListener('mouseenter') mouseEnter() {
     // this.elementRef.nativeElement.style.boxShadow =
     //   '0 4px 8px rgba(0,0,0,0.16), 0 4px 8px rgba(0,0,0,0.23)';
+
     this.renderer.setStyle(
       //1. The dom element
       this.elementRef.nativeElement,

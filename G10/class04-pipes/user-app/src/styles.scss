@@ -1,3 +1,4 @@
+@use "./assets/styles/_variables" as var;
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap");
@@ -16,12 +17,16 @@ header {
   background-color: #00b894;
   border-bottom: 2px solid #2d3436;
   margin-bottom: 20px;
-
+  background-color: gold;
   h1 {
     margin: 0;
     font-size: 50px;
     font-weight: 300;
     padding: 20px;
+
+    &:hover {
+      background-color: lightyellow;
+    }
   }
 }
 
