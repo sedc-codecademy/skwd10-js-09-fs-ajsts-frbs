@@ -23,6 +23,6 @@ export class ReviewDetailsComponent implements OnInit {
   }
 
   onLikeClick() {
-    console.log('I liked this review.');
+    this.movieService.addLike(this.selectedMovie);
   }
 }

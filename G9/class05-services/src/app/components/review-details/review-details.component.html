@@ -1,4 +1,4 @@
-<section class="container">
+<section *ngIf="!!selectedMovie" class="container">
   <div class="details__heading">
     <h2>{{ selectedMovie.title }}</h2>
     <span class="item__stats"> {{ selectedMovie.rating }} </span>

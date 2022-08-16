@@ -17,11 +17,22 @@ export class ReviewListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggerService.logTimeFromComponent('Movie List');
-    this.movieService.moviesEmitter.subscribe((movies: Movie[]) => this.movies = movies);
+    this.movieService.moviesEmitter.subscribe(
+      (movies: Movie[]) => (this.movies = movies)
+    );
+
+    this.movieService.likedMovieEmitter.subscribe((likedMovie: Movie) => {
+      this.movies.forEach((movie: Movie) => {
+        if (movie.id === likedMovie.id) {
+          movie.likeCount++;
+        }
+      });
+    });
+    
     this.movieService.fetchMovies();
   }
 
-  onMovieClick(movie: Movie):void {
+  onMovieClick(movie: Movie): void {
     this.movieService.onMovieSelect(movie);
   }
 }

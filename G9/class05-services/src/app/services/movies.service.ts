@@ -5,8 +5,11 @@ import { Movie } from '../interfaces/movie';
   providedIn: 'root',
 })
 export class MoviesService {
+  totalLikes: number = 0;
   moviesEmitter: EventEmitter<Movie[]> = new EventEmitter<Movie[]>();
   selectMovieEmitter: EventEmitter<Movie> = new EventEmitter<Movie>();
+  likesEmitter: EventEmitter<number> = new EventEmitter<number>();
+  likedMovieEmitter: EventEmitter<Movie> = new EventEmitter<Movie>();
   constructor() {}
 
   fetchMovies() {
@@ -15,6 +18,15 @@ export class MoviesService {
       .then((movies: Movie[]) => this.moviesEmitter.emit(movies));
   }
   onMovieSelect(movie: Movie) {
+    // fetch(`https://movies-api-sedc.herokuapp.com/movies/${movie.id}`)
+    //   .then((data) => data.json())
+    //   .then((movie: Movie) => this.selectMovieEmitter.emit(movie));
     this.selectMovieEmitter.emit(movie);
+  }
+
+  addLike(selectedMovie: Movie) {
+    this.totalLikes++;
+    this.likesEmitter.emit(this.totalLikes);
+    this.likedMovieEmitter.emit(selectedMovie);
   }
 }
