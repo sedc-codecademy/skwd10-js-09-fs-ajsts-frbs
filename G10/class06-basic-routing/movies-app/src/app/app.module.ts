@@ -8,6 +8,8 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { HeaderComponent } from './components/header/header.component';
     MovieDetailsComponent,
     AddMovieComponent,
     HeaderComponent,
+    HomeComponent,
+    AboutComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

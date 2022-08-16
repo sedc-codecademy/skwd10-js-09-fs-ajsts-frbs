@@ -14,7 +14,9 @@ export class MovieListComponent implements OnInit {
   constructor(
     private loggerService: LoggerService,
     private moviesService: MoviesService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.loggerService.logTime('Movie List');
