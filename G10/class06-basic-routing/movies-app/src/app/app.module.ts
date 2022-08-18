@@ -10,6 +10,7 @@ import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { AboutComponent } from './components/about/about.component';
     HeaderComponent,
     HomeComponent,
     AboutComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

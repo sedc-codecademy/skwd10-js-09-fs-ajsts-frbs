@@ -26,8 +26,4 @@ export class MovieListComponent implements OnInit {
       this.movies = value;
     });
   }
-
-  onItemClick(movie: Movie) {
-    this.moviesService.onMovieSelect(movie);
-  }
 }

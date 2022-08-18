@@ -8,7 +8,7 @@
       <li
         *ngFor="let movie of movies"
         class="list__item"
-        (click)="onItemClick(movie)"
+        [routerLink]="'/movie-details/' + movie.id"
       >
         <span>{{ movie.title }}</span>
         <span class="item__rating">{{ movie.rating }}/10</span>

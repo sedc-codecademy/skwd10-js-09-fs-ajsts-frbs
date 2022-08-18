@@ -1,11 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoviesService {
-  constructor() {}
+  constructor(private router: Router) {
+    console.log(router);
+  }
 
   totalLikes: number = 0;
 
@@ -30,5 +33,12 @@ export class MoviesService {
     fetch('https://movies-api-sedc.herokuapp.com/movies')
       .then((res) => res.json())
       .then((data) => this.moviesEmitter.emit(data));
+  }
+
+  fetchMovieById(id: number) {
+    fetch(`https://movies-api-sedc.herokuapp.com/movies/${id}`)
+      .then((res) => res.json())
+      .then((data) => this.selectedMovieEmitter.emit(data))
+      .catch((err) => this.router.navigate(['not-found']));
   }
 }
