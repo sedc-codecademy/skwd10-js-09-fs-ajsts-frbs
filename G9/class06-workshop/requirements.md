@@ -15,7 +15,9 @@ displayed in a new Order Details component.
 
 4.3) The order details component should render all data about the selected order, and it should have buttons for cancel and complete.
 
-4.4) The order details component should only display an order if an order was selected. Nothing else except a title should be printed.
+4.4) Add a dynamic class to the order list items based on the status. 
+
+4.5) The order details component should only display an order if an order was selected. Nothing else except a title should be printed.
 
 5.1) The order date should be displayed in the mediumDate format.
 

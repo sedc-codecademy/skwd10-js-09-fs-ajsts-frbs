@@ -1,0 +1,74 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="expenseForm">
+  <div class="form-subgroup basic-data" formGroupName="basicData">
+    <div class="form-group">
+      <label for="expense-title">Title</label>
+      <input
+        type="text"
+        class="form-input"
+        id="expense-title"
+        autocomplete="off"
+        formControlName="title"
+      />
+    </div>
+    <p
+      class="help-block"
+      *ngIf="expenseForm.get('basicData.title')?.errors?.nameIsForbidden"
+    >
+      This title is blocked!
+    </p>
+    <div class="form-group">
+      <label for="expense-amount">Amount</label>
+      <input
+        type="text"
+        class="form-input"
+        id="expense-amount"
+        autocomplete="off"
+        formControlName="amount"
+      />
+    </div>
+    <p class="help-block" *ngIf="expenseForm.get('basicData.amount')?.errors?.max">The value is too high! Up to 20!</p>
+    <div class="form-group">
+      <label for="expense-date">Date</label>
+      <input
+        type="date"
+        class="form-input"
+        id="expense-date"
+        formControlName="date"
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="expense-priority">Expense Priority</label>
+    <select id="expense-priority" class="form-input" formControlName="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="expense-comment" class="form-label">Comment</label>
+    <textarea
+      formControlName="comment"
+      class="form-input"
+      name="expenseComment"
+      id="expense-comment"
+      cols="30"
+      rows="3"
+    ></textarea>
+    <p class="comment-length">
+      {{ expenseForm.value.comment.length }}/{{ maximumCommentSize }}
+    </p>
+  </div>
+  <div class="form-group">
+    <div class="radio" *ngFor="let type of paymentType">
+      <input
+        type="radio"
+        [id]="type"
+        [value]="type"
+        formControlName="payType"
+      />
+      <label [for]="type">{{ type }}</label>
+    </div>
+  </div>
+  <button [disabled]="!expenseForm.valid" type="submit" class="btn">Submit</button>
+</form>
