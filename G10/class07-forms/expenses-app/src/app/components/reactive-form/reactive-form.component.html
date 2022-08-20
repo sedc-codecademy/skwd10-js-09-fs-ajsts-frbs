@@ -1,0 +1,41 @@
+<form (ngSubmit)="onFormSubmit()" [formGroup]="expenseForm">
+  <div class="form-group">
+    <label for="expense-title">Title</label>
+    <input
+      type="text"
+      class="form-input"
+      id="expense-title"
+      autocomplete="off"
+      formControlName="title"
+    />
+  </div>
+  <p
+    class="help-block"
+    *ngIf="
+      !expenseForm.get('title')?.valid && expenseForm.get('title')?.touched
+    "
+  >
+    The field is required
+  </p>
+  <div class="form-group">
+    <label for="expense-amount">Amount</label>
+    <input
+      type="number"
+      class="form-input"
+      id="expense-amount"
+      formControlName="amount"
+    />
+  </div>
+  <p
+    class="help-block"
+    *ngIf="
+      expenseForm.get('amount')?.errors?.max ||
+      expenseForm.get('amount')?.errors?.min
+    "
+  >
+    Value must be between 1-500
+  </p>
+  <button [disabled]="!expenseForm.valid" type="submit" class="btn">
+    Submit
+  </button>
+</form>
