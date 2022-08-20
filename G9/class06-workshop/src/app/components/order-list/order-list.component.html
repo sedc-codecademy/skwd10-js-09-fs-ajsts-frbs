@@ -1,0 +1,11 @@
+<section class="container">
+  <h2>Order List</h2>
+  <div class="order__list">
+    <ul>
+      <li *ngFor="let order of orders" (click)="onOrderClick(order)">
+        <span>ID: {{ order.id }} </span>
+        <span [ngClass]="order.status" class="status">{{ order.status }}</span>
+      </li>
+    </ul>
+  </div>
+</section>
