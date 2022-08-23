@@ -1,0 +1,10 @@
+<div class="orders">
+  <div 
+  class="order__item" 
+  *ngFor="let order of orders"
+  (click)="onNavigateOrder(order)"
+  >
+    <span>ID: {{ order.id }}</span>
+    <span>{{ order.status }}</span>
+  </div>
+</div>

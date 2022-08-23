@@ -1,5 +1,5 @@
 <!-- <form (ngSubmit)="onFormSubmit(expenseForm)" #expenseForm="ngForm"> -->
-<form (ngSubmit)="onFormSubmit()" #expenseForm="ngForm">
+<form #expenseForm="ngForm" (ngSubmit)="onFormSubmit()">
   <div
     class="basic-data"
     ngModelGroup="basicDataGroup"
@@ -8,12 +8,12 @@
     <div class="form-group">
       <label for="expense-title">Title</label>
       <input
+        autocomplete="off"
         type="text"
         class="form-input"
         id="expense-title"
         name="expenseTitle"
         ngModel
-        autocomplete="off"
         #expenseTitle="ngModel"
         required
       />
@@ -24,38 +24,43 @@
     <div class="form-group">
       <label for="expense-amount">Amount</label>
       <input
+        autocomplete="off"
         type="text"
         class="form-input"
         id="expense-amount"
         name="expenseAmount"
         ngModel
-        autocomplete="off"
+        required
+        #expenseAmount="ngModel"
       />
     </div>
+    <p class="help-block" *ngIf="!expenseAmount.valid && expenseAmount.touched">
+      An amount is required!
+    </p>
     <div class="form-group">
       <label for="expense-date">Date</label>
       <input
+        autocomplete="off"
         type="date"
         class="form-input"
         id="expense-date"
         name="expenseDate"
         ngModel
-        autocomplete="off"
       />
     </div>
     <p
       class="help-block"
       *ngIf="!basicDataGroup.valid && basicDataGroup.touched"
     >
-      Basic data is not valid!
+      Basic data is required!
     </p>
   </div>
   <div class="form-group">
     <label for="expense-priority">Expense Priority</label>
     <select
-      class="form-input"
       name="expensePriority"
       id="expense-priority"
+      class="form-input"
       ngModel
     >
       <option value="low">Low</option>
@@ -74,6 +79,7 @@
       [maxLength]="maximumCommentSize"
       [(ngModel)]="expenseCommentValue"
     ></textarea>
+    <!-- (input)="onInput($event)" -->
     <p class="comment-length">
       {{ expenseCommentValue.length }}/{{ maximumCommentSize }}
     </p>
@@ -90,5 +96,7 @@
       <label [for]="type">{{ type }}</label>
     </div>
   </div>
-  <button class="btn" [disabled]="!expenseForm.valid" type="submit">Submit</button>
+  <button class="btn" [disabled]="!expenseForm.valid" type="submit">
+    Submit
+  </button>
 </form>

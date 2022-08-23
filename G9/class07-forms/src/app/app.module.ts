@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TemplateFormComponent } from './components/template-form/template-form.component';
+import { HeaderComponent } from './components/header/header.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
-import { OrdersComponent } from './components/orders/orders.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateFormComponent,
+    HeaderComponent,
     ReactiveFormComponent,
-    OrdersComponent,
-    OrderDetailsComponent
+    TemplateFormComponent,
+    HomeComponent,
+    NotFoundComponent,
+    OrderDetailsComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
+    // Point #5
+    AppRoutingModule,
+    // Template Driven Forms
     FormsModule,
     ReactiveFormsModule
   ],

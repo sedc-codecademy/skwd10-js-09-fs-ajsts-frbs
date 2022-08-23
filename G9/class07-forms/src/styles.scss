@@ -64,6 +64,10 @@ input.ng-invalid.ng-touched {
   border-bottom: 2px solid $color-red;
 }
 
+textarea.ng-invalid {
+  border: 2px solid $color-red;
+}
+
 .help-block {
   color: $color-red;
   font-weight: 700;
@@ -87,4 +91,37 @@ input.ng-invalid.ng-touched {
   label {
     text-transform: capitalize;
   }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &__brand {
+    font-size: 3rem;
+  }
+  &__nav {
+    display: flex;
+    gap: 10px;
+    &-item {
+      background-color: $color-dark;
+      color: $color-light;
+      padding: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      &.active {
+        background-color: $color-green;
+        color: $color-dark;
+      }
+    }
+  }
+}
+
+.order__item {
+  padding: 1rem;
+  background-color: $color-dark;
+  color: $color-light;
+  width: 150px;
+  margin: 5px;
 }

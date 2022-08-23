@@ -1,13 +1,4 @@
-<button class="btn toggle-btn" [ngStyle]="{backgroundColor: showTemplateForms? '#a3cb38' : '#74b9ff'}" (click)="onToggleForm()">Toggle Forms</button>
-
-<ng-template #tempDriven>
-  <app-template-form></app-template-form>
-</ng-template>
-
-<ng-template #reactive>
-  <app-reactive-form></app-reactive-form>
-</ng-template>
-
-<div *ngIf="showTemplateForms; else reactive">
-  <ng-container [ngTemplateOutlet]="tempDriven"></ng-container>
-</div>
+<app-header></app-header>
+<main>
+  <router-outlet></router-outlet>
+</main>

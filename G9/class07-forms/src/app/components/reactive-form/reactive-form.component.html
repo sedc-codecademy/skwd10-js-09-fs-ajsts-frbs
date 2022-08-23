@@ -3,10 +3,10 @@
     <div class="form-group">
       <label for="expense-title">Title</label>
       <input
+        autocomplete="off"
         type="text"
         class="form-input"
         id="expense-title"
-        autocomplete="off"
         formControlName="title"
       />
     </div>
@@ -19,17 +19,17 @@
     <div class="form-group">
       <label for="expense-amount">Amount</label>
       <input
+        autocomplete="off"
         type="text"
         class="form-input"
         id="expense-amount"
-        autocomplete="off"
         formControlName="amount"
       />
     </div>
-    <p class="help-block" *ngIf="expenseForm.get('basicData.amount')?.errors?.max">The value is too high! Up to 20!</p>
     <div class="form-group">
       <label for="expense-date">Date</label>
       <input
+        autocomplete="off"
         type="date"
         class="form-input"
         id="expense-date"
@@ -46,14 +46,13 @@
     </select>
   </div>
   <div class="form-group">
-    <label for="expense-comment" class="form-label">Comment</label>
+    <label for="expense-comment">Comment</label>
     <textarea
-      formControlName="comment"
       class="form-input"
-      name="expenseComment"
       id="expense-comment"
       cols="30"
       rows="3"
+      formControlName="comment"
     ></textarea>
     <p class="comment-length">
       {{ expenseForm.value.comment.length }}/{{ maximumCommentSize }}
@@ -70,5 +69,5 @@
       <label [for]="type">{{ type }}</label>
     </div>
   </div>
-  <button [disabled]="!expenseForm.valid" type="submit" class="btn">Submit</button>
+  <button class="btn" type="submit">Submit</button>
 </form>

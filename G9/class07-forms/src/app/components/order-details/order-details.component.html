@@ -1,1 +1,8 @@
-<p>order-details works!</p>
+<div class="container" *ngIf="selectedOrder">
+  <h1>{{ selectedOrder.id }}</h1>
+  <ul>
+    <li *ngFor="let item of selectedOrder.items">
+      {{ item }}
+    </li>
+  </ul>
+</div>
