@@ -1,0 +1,18 @@
+<h1>Subjects</h1>
+<ul>
+  <li *ngFor="let name of nameArr">
+    {{ name | uppercase }}
+  </li>
+</ul>
+
+<ol>
+  <li *ngFor="let fruit of $fruitObs | async">
+    {{ fruit | uppercase }}
+  </li>
+</ol>
+
+<input type="text" [formControl]="nameInput" />
+<button (click)="onAddName()">Add Name</button>
+
+<input type="text" [formControl]="fruitInput" />
+<button (click)="onAddFruit()">Add Fruit</button>
