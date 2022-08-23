@@ -6,19 +6,17 @@ import { AppComponent } from './app.component';
 import { ObservablesComponent } from './components/observables/observables.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { OperatorsComponent } from './components/operators/operators.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ObservablesComponent,
     SubjectsComponent,
-    OperatorsComponent
+    OperatorsComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
