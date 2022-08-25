@@ -1,0 +1,153 @@
+/* You can add global styles to this file, and also import other style files */
+
+$color-dark: #2f3640;
+$color-primary: #44bd32;
+$color-accent: #e84118;
+$color-light: #f5f6fa;
+
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+$font-display: "Righteous", cursive;
+$font-text: "Nunito", sans-serif;
+$box-shadow-neon: 0 3px 6px rgba($color-primary, 0.16),
+  0 3px 6px rgba($color-primary, 0.23);
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: #353b48;
+}
+
+main {
+  padding: 2rem;
+}
+
+.header {
+  background-color: $color-dark;
+  padding: 1rem 2rem;
+  color: $color-light;
+  &__brand {
+    font-family: $font-display;
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    > span {
+      background-color: $color-primary;
+      padding: 5px;
+      border-radius: 8px;
+      color: $color-dark;
+      box-shadow: $box-shadow-neon;
+    }
+  }
+  &__nav {
+    display: flex;
+    font-family: $font-text;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 1rem;
+    cursor: pointer;
+    &-item {
+      &.active,
+      &:hover {
+        color: #4cd137;
+        text-shadow: $box-shadow-neon;
+      }
+    }
+  }
+}
+
+.htitle {
+  font-family: $font-display;
+}
+
+.title-h1 {
+  font-size: 4rem;
+  color: $color-light;
+  font-weight: 300;
+}
+
+.title-h2 {
+  font-size: 3rem;
+  color: $color-light;
+  font-weight: 300;
+}
+
+.title-h3 {
+  font-size: 2.5rem;
+  color: $color-light;
+  font-weight: 300;
+}
+
+.routing {
+  &-list {
+    padding: 2rem;
+    color: $color-light;
+  }
+  &-step {
+    font-family: $font-text;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+}
+
+.post-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.post {
+  background-color: $color-primary;
+  color: #2f3640;
+  font-size: 1.5rem;
+  font-family: $font-text;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    transition: 0.3s ease-in-out;
+    background-color: #4cd137;
+  }
+
+  &-card {
+    background-color: $color-dark;
+    width: 50%;
+    margin: 0 auto;
+    &__header {
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      gap: 1rem;
+      font-size: 4rem;
+      background-color: $color-primary;
+      font-family: $font-display;
+      padding: 1rem;
+      color: $color-dark;
+    }
+    &__body {
+      font-size: 2rem;
+      font-family: $font-text;
+      padding: 1.8rem;
+      color: #f5f6fa;
+      text-transform: capitalize;
+      border: 1px solid $color-primary;
+      border-radius: 0 0 8px 8px;
+      box-shadow: $box-shadow-neon;
+    }
+  }
+}
