@@ -23,8 +23,8 @@ export class SubjectsComponent implements OnInit {
     this.nameInput = new FormControl('');
     this.fruitInput = new FormControl('');
 
-    this.obsService.nameSubject.subscribe({
-      next: (value) => (this.nameArray = value),
+    this.obsService.nameSubject.subscribe((value) => {
+      this.nameArray = value;
     });
     this.obsService.getNames();
   }

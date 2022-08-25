@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 const fruits = ['Apple', 'Pear', 'Orange', 'Grape', 'Banana'];
 
@@ -12,7 +12,10 @@ export class ObservablesService {
   nameSubject: Subject<string[]> = new Subject<string[]>();
 
   fruitBehaviorSubject = new BehaviorSubject<string[]>(fruits);
-  $fruitObs = this.fruitBehaviorSubject as Observable<string[]>;
+  //Pipes can be added like so in services
+  $fruitObs = (this.fruitBehaviorSubject as Observable<string[]>).pipe(
+    map((value) => value.map((fruit) => fruit + ' is tasty!'))
+  );
 
   getNames() {
     console.log('get names called');
