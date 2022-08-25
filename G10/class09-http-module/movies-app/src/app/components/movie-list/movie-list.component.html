@@ -1,0 +1,19 @@
+<section class="container">
+  <div>
+    <h1>Movie List</h1>
+  </div>
+
+  <div class="list__content">
+    <ul>
+      <li
+        (click)="onMovieClick(movie)"
+        *ngFor="let movie of moviesObs$ | async"
+        class="list__item"
+        [routerLink]="'/movie-details/' + movie.id"
+      >
+        <span>{{ movie.title }}</span>
+        <span class="item__rating">{{ movie.rating }}/10</span>
+      </li>
+    </ul>
+  </div>
+</section>

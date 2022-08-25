@@ -1,0 +1,26 @@
+<section *ngIf="!!selectedMovie" class="container">
+  <div class="details__heading">
+    <h2>{{ selectedMovie.title }}</h2>
+    <span class="item__rating">{{ selectedMovie.rating }}/10</span>
+  </div>
+  <div>
+    <div>
+      <h3>Movie Details</h3>
+      <p>Year: {{ selectedMovie.year }}</p>
+      <p>Director: {{ selectedMovie.director }}</p>
+      <p>Genres: {{ selectedMovie.genres }}</p>
+    </div>
+    <div class="movie__review">
+      <h3>Review</h3>
+      <p>{{ selectedMovie.text }}</p>
+      <div class="review__footer">
+        <p>
+          <em>by {{ selectedMovie.author }}</em>
+        </p>
+        <button type="button" class="like__btn" (click)="onMovieEdit()">
+          <strong>Edit</strong>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
