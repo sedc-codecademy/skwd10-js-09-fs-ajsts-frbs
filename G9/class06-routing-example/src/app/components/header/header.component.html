@@ -1,0 +1,19 @@
+<header class="header">
+  <div class="header__brand">Angular <span>Routing</span></div>
+  <nav class="header__nav">
+    <div
+      class="header__nav-item"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </div>
+    <div class="header__nav-item" routerLink="/about" routerLinkActive="active">
+      About
+    </div>
+    <div class="header__nav-item" routerLink="/posts" routerLinkActive="active">
+      Posts
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,9 @@
+<div class="post-card" *ngIf="!!currentPost">
+  <div class="post-card__header">
+    <p class="post-card__header-id">{{ currentPost.id }}</p>
+    <p class="post-card__header-title">{{ currentPost.title }}</p>
+  </div>
+  <div class="post-card__body">
+    {{ currentPost.body }}
+  </div>
+</div>

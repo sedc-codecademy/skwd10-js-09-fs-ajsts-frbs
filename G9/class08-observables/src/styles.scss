@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  &__item {
+    padding: 1rem;
+    background-color: #34495e;
+    color: #ecf0f1;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}

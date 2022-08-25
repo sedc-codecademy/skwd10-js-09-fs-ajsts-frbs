@@ -1,0 +1,6 @@
+<div class="post-container" *ngIf="!!postsArray">
+  <div class="post" (click)="singlePostNavigate(post)" *ngFor="let post of postsArray">
+    <div class="post__id">{{ post.id }}</div>
+    <div class="post__title">{{ post.title }}</div>
+  </div>
+</div>
