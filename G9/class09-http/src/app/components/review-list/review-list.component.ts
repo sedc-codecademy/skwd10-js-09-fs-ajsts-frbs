@@ -19,12 +19,14 @@ export class ReviewListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.movieService.fetchMovies();
-    this.loggerService.logTimeFromComponent('Movie List');
-
-    this.movieService.moviesEmitter.subscribe(
-      (movies) => (this.movies = movies)
-    );
+    // this.movieService.fetchMovies();
+    // this.movieService.moviesEmitter.subscribe(
+    //   (movies) => (this.movies = movies)
+    // );
+    this.movieService.getMovies();
+    this.movieService.moviesObs$.subscribe({
+      next: (payload) => (this.movies = payload),
+    });
   }
 
   onMovieClick(movie: Movie) {

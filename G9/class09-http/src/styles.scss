@@ -49,8 +49,88 @@ header {
   }
 }
 
+.form-container {
+  padding: 30px 50px 50px 50px;
+  width: fit-content;
+
+  background-color: #ed474a;
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 20px;
+  }
+
+  form {
+    border: none;
+    background-color: #e6ecde;
+  }
+}
+
+form {
+  background-color: #e6ecde;
+  padding: 30px 30px;
+  border-radius: 4px;
+
+  width: fit-content;
+  .form-group {
+    width: 100%;
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 15px;
+
+    textarea {
+      resize: none;
+    }
+
+    label {
+      font-size: 1.3rem;
+      padding-left: 10px;
+    }
+
+    .form-input {
+      font-family: "Nunito", sans-serif;
+      font-size: 1.3rem;
+      border-radius: 4px;
+      margin: 5px 0px;
+      padding: 10px;
+      border: none;
+      box-shadow: 0 10px 20px #d0d3ca, 0 6px 6px #d0d3ca;
+    }
+  }
+}
+
+.radio {
+  appearance: none;
+  transition: 0.1s;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: #8a95a5;
+  }
+}
+
+.radio:checked {
+  &::after {
+    background-color: #090c08;
+    color: #e6ecde;
+    border: none;
+  }
+}
+
 .item__stats {
   font-weight: 600;
   background-color: #ffdb15;
   padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.btn {
+  font-size: 20px;
+  padding: 5px 0px;
+  margin: 5px 0px;
+  width: 100%;
+  text-align: center;
 }

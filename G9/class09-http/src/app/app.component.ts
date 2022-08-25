@@ -23,6 +23,6 @@ export class AppComponent implements OnInit {
       (likes) => (this.totalLikes = likes)
     );
 
-    this.movieService.fetchMovies();
+    // this.movieService.fetchMovies();
   }
 }

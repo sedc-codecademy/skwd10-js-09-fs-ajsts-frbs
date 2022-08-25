@@ -24,16 +24,25 @@ export class ReviewDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movieService.fetchMovieById(this.movieId);
-
-    this.movieService.selectMovieEmitter.subscribe(
-      (movie) => (this.selectedMovie = movie)
-    );
+    // this.movieService.fetchMovieById(this.movieId);
+    // this.movieService.selectMovieEmitter.subscribe(
+    //   (movie) => (this.selectedMovie = movie)
+    // );
+    this.movieService.selectedMovie$.subscribe({
+      next: (movie) => (this.selectedMovie = movie),
+    });
+    // Checking to see if a movie exists, and it's not an empty object.
+    // const movie = this.movieService.selectedMovieSubject.getValue();
+    // if (!movie.title) {
+    this.movieService.getMovieById(this.movieId);
+    //}
   }
 
-  onLikeClick() {
-    console.log('here');
-    this.loggerService.logTimeFromComponent('Movie Details');
-    this.movieService.addLike();
-  }
+  onMovieEdit() {}
+
+  // onLikeClick() {
+  //   console.log('here');
+  //   this.loggerService.logTimeFromComponent('Movie Details');
+  //   this.movieService.addLike();
+  // }
 }
