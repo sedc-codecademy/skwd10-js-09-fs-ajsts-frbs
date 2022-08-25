@@ -1,0 +1,20 @@
+<section class="container">
+  <div>
+    <h1>Reviews</h1>
+  </div>
+
+  <div class="list__content">
+    <ul *ngIf="!!movies">
+      <li
+        *ngFor="let movie of movies"
+        (click)="onMovieClick(movie)"
+        class="list__item"
+      >
+        <span>{{ movie.title }}</span>
+        <span class="item__stats">
+          <span>{{ movie.rating }}/10</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</section>
