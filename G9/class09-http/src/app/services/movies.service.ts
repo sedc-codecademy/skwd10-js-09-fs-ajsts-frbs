@@ -15,15 +15,18 @@ export class MoviesService {
     private movieRepositoryService: MoviesRepositoryService
   ) {}
 
-  selectMovieEmitter = new EventEmitter<Movie>();
-  moviesEmitter = new EventEmitter<Movie[]>();
-  likesEmitter = new EventEmitter<number>();
+  // selectMovieEmitter = new EventEmitter<Movie>();
+  // moviesEmitter = new EventEmitter<Movie[]>();
+  // likesEmitter = new EventEmitter<number>();
 
   moviesSubject = new BehaviorSubject<Movie[]>([]);
   moviesObs$ = this.moviesSubject.asObservable();
 
   selectedMovieSubject = new BehaviorSubject<Movie>({} as Movie);
   selectedMovie$ = this.selectedMovieSubject.asObservable();
+
+  editMovieSubject = new BehaviorSubject<Movie>({} as Movie);
+  editMovieObs$ = this.editMovieSubject.asObservable();
 
   totalLikes = 0;
 
@@ -57,16 +60,39 @@ export class MoviesService {
     });
   }
 
+  addMovie(movie: Movie) {
+    this.movieRepositoryService.postNewMovie(movie).subscribe({
+      next: (createdMovie) => {
+        this.router.navigate(['movie-details', createdMovie.id]);
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  getMovieToEdit() {
+    return this.editMovieSubject.getValue();
+  }
+
+  updateMovie(movieId: number | undefined, movieData: Partial<Movie>) {
+    this.movieRepositoryService.updateMovie(movieId, movieData).subscribe({
+      next: (movie) => {
+        this.selectedMovieSubject.next(movie);
+        this.router.navigate(['movie-details', movie.id]);
+      },
+    });
+  }
+
   loadMovieById(id: number): Movie | undefined {
     return this.movies.find((movie) => movie.id === id);
   }
 
   onMovieSelect(movie: Movie) {
-    this.selectMovieEmitter.emit(movie);
+    // this.selectMovieEmitter.emit(movie);
+    this.selectedMovieSubject.next(movie);
   }
 
-  addLike() {
-    this.totalLikes++;
-    this.likesEmitter.emit(this.totalLikes);
-  }
+  // addLike() {
+  //   this.totalLikes++;
+  //   this.likesEmitter.emit(this.totalLikes);
+  // }
 }

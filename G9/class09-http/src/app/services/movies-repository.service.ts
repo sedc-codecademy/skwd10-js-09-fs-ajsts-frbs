@@ -20,4 +20,19 @@ export class MoviesRepositoryService {
       .get(`${MOVIES_URL}/${movieId}`)
       .pipe(map((data) => data as Movie));
   }
+
+  postNewMovie(newMovieData: Movie): Observable<Movie> {
+    return this.http
+      .post(MOVIES_URL, newMovieData)
+      .pipe(map((data) => data as Movie));
+  }
+
+  updateMovie(
+    movieId: number | undefined,
+    newMovieData: Partial<Movie>
+  ): Observable<Movie> {
+    return this.http
+      .patch(`${MOVIES_URL}/${movieId}`, newMovieData)
+      .pipe(map((data) => data as Movie));
+  }
 }

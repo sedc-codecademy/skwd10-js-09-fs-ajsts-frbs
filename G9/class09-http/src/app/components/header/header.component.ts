@@ -12,8 +12,8 @@ export class HeaderComponent implements OnInit {
   constructor(private movieService: MoviesService) {}
 
   ngOnInit(): void {
-    this.movieService.likesEmitter.subscribe(
-      (likes) => (this.totalLikes = likes)
-    );
+    // this.movieService.likesEmitter.subscribe(
+    //   (likes) => (this.totalLikes = likes)
+    // );
   }
 }
