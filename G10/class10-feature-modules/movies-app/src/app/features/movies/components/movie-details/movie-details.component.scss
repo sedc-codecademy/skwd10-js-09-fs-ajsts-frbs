@@ -1,0 +1,39 @@
+.container {
+  font-size: 18px;
+}
+
+.details__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item__rating {
+  font-size: 35px;
+}
+
+.movie__details {
+  display: flex;
+
+  p {
+    margin-right: 15px;
+  }
+}
+
+.review__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    font-weight: 600;
+    font-size: 25px;
+  }
+
+  button {
+    font-size: 24px;
+    padding: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
