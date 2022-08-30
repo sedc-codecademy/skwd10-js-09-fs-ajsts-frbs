@@ -35,6 +35,6 @@ export class ReviewListComponent implements OnInit {
   }
 
   onLikeClick() {
-    this.movieService.addLike();
+    // this.movieService.addLike();
   }
 }

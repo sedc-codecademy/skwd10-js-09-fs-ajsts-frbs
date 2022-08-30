@@ -19,9 +19,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.loggerService.logTimeFromComponent('App Component');
 
-    this.movieService.likesEmitter.subscribe(
-      (likes) => (this.totalLikes = likes)
-    );
+    // this.movieService.likesEmitter.subscribe(
+    //   (likes) => (this.totalLikes = likes)
+    // );
 
     // this.movieService.fetchMovies();
   }

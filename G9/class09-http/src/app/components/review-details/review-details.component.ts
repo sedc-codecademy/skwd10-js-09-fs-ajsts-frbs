@@ -18,7 +18,8 @@ export class ReviewDetailsComponent implements OnInit {
   constructor(
     private movieService: MoviesService,
     private loggerService: LoggerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.movieId = Number(this.route.snapshot.params['id']);
   }
@@ -28,17 +29,21 @@ export class ReviewDetailsComponent implements OnInit {
     // this.movieService.selectMovieEmitter.subscribe(
     //   (movie) => (this.selectedMovie = movie)
     // );
+    const movie = this.movieService.selectedMovieSubject.getValue();
+    
+    if (!movie.title) {
+      this.movieService.getMovieById(this.movieId);
+    }
+
     this.movieService.selectedMovie$.subscribe({
       next: (movie) => (this.selectedMovie = movie),
     });
-    // Checking to see if a movie exists, and it's not an empty object.
-    // const movie = this.movieService.selectedMovieSubject.getValue();
-    // if (!movie.title) {
-    this.movieService.getMovieById(this.movieId);
-    //}
   }
 
-  onMovieEdit() {}
+  onMovieEdit() {
+    this.movieService.editMovieSubject.next(this.selectedMovie);
+    this.router.navigate(['edit-movie']);
+  }
 
   // onLikeClick() {
   //   console.log('here');
