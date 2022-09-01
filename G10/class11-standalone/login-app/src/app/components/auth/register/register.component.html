@@ -1,0 +1,39 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="onFormSubmit()"
+  class="form-container"
+>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      class="form-input"
+      id="email"
+      formControlName="email"
+      autocomplete="off"
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-input"
+      id="password"
+      formControlName="password"
+      autocomplete="off"
+    />
+  </div>
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input
+      type="password"
+      class="form-input"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      autocomplete="off"
+    />
+  </div>
+  <button class="btn" [disabled]="registerForm.invalid" type="submit">
+    Register
+  </button>
+</form>

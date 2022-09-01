@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+$color-dark: #2d3436;
+$color-light: #ecf0f1;
+$color-primary: #6c5ce7;
+$color-primary--light: #a29bfe;
+$color-accent: #00b894;
+$font-family: "Quicksand", sans-serif;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: $font-family;
+}
+
+.header {
+  &__brand {
+    font-size: 3rem;
+    padding: 1rem;
+  }
+  &__nav {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: $color-dark;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: $color-light;
+    &-item {
+      cursor: pointer;
+      padding: 1rem;
+      &:hover {
+        transition: 0.3s ease-in-out;
+        background-color: $color-primary;
+        color: $color-dark;
+      }
+    }
+  }
+}
+
+.form {
+  &-container {
+    background-color: $color-dark;
+    border-radius: 4px;
+    padding: 1rem;
+    width: 50%;
+    margin: 1rem auto;
+  }
+  &-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      font-size: 1.8rem;
+      color: $color-light;
+      padding: 0.5rem;
+    }
+  }
+  &-input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+  }
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+  margin-top: 2rem;
+  background-color: $color-primary;
+  color: $color-dark;
+  font-family: $font-family;
+  font-weight: 700;
+  font-size: 1.8rem;
+  &:disabled {
+    background-color: $color-primary--light;
+  }
+}
