@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="header__brand">Standalone Angular</div>
+  <nav class="header__nav">
+    <div
+      class="header__nav-item"
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      Home
+    </div>
+    <div class="header__nav-item"
+    routerLink="/auth/login"
+    routerLinkActive="active"
+    >Login</div>
+    <div class="header__nav-item"
+    routerLink="/auth/register"
+    routerLinkActive="active"
+    >Register</div>
+    <div class="header__nav-item" (click)="onUserLogout()">Logout</div>
+  </nav>
+</header>
