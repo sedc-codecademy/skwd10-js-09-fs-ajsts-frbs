@@ -9,14 +9,24 @@
     >
       Home
     </div>
-    <div class="header__nav-item"
-    routerLink="/auth/login"
-    routerLinkActive="active"
-    >Login</div>
-    <div class="header__nav-item"
-    routerLink="/auth/register"
-    routerLinkActive="active"
-    >Register</div>
-    <div class="header__nav-item" (click)="onUserLogout()">Logout</div>
+    <ng-container *ngIf="!currentUser">
+      <div
+        class="header__nav-item"
+        routerLink="/auth/login"
+        routerLinkActive="active"
+      >
+        Login
+      </div>
+      <div
+        class="header__nav-item"
+        routerLink="/auth/register"
+        routerLinkActive="active"
+      >
+        Register
+      </div>
+    </ng-container>
+    <ng-container *ngIf="currentUser">
+      <div class="header__nav-item" (click)="onUserLogout()">Logout</div>
+    </ng-container>
   </nav>
 </header>

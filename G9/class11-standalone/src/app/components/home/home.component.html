@@ -1,2 +1,43 @@
-<h1>Welcome to Standalone Components!</h1>
-<h2>Angular 14+</h2>
+<h1>The swapi app exercise</h1>
+
+<h2>Endpoints used</h2>
+
+<h3>People: "https://swapi.dev/api/people"</h3>
+<h3>Planets "https://swapi.dev/api/planets"</h3>
+<hr style="margin-bottom: 1rem;" />
+<h3>Requirements</h3>
+
+<ol>
+  <li>Create a new angular project and set the style to be scss</li>
+  <li>
+    In the project create 2 feature modules called people and planets
+    respectfully
+  </li>
+  <li>
+    These modules should have 2 components each , one to list the people/planets
+    and one to show details of person/planet
+  </li>
+  <li>Configure the project so that the modules are lazily loaded</li>
+  <li>
+    Configure the feature modules to have their own routes leading to the
+    components
+  </li>
+  <li>
+    <p>The routes should be:</p>
+    <ul>
+      <li>localhost:4200/people</li>
+      <li>localhost:4200/people/details/1</li>
+      <li>localhost:4200/planets</li>
+      <li>localhost:4200/planets/details/1</li>
+    </ul>
+  </li>
+  <li>
+    Add a header component that will have navigation to the newly created
+    modules
+  </li>
+  <li>Create a service called `swapi` that will handle the fetching of data</li>
+  <li>
+    Use behavioral subjects for showing all planets/people and for selecting
+    person/planet
+  </li>
+</ol>

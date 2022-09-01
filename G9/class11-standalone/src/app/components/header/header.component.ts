@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService, User } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,18 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  currentUser: User | null;
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.currentUser$.subscribe({
+      next: (user) => (this.currentUser = user),
+      error: (err) => console.error(err),
+    });
+  }
 
   onUserLogout() {
+    this.authService.logoutUser();
     console.log('User logged out!');
   }
 }
