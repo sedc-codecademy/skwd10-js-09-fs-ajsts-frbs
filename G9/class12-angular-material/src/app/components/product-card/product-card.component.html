@@ -1,0 +1,16 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-header>{{ data.title }}</mat-card-header>
+    <mat-card-subtitle>Price: {{ data.price }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="data.image" [alt]="data.title" />
+  <mat-card-content>
+    <p>{{ data.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">LIKE</button>
+    <button mat-raised-button color="accent" [mat-dialog-close]="data">
+      SHARE
+    </button>
+  </mat-card-actions>
+</mat-card>

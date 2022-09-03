@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-subtitle>Enter your credentials</mat-card-subtitle>
+  </mat-card-header>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onLoginUser()">
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="E.x jondoe@gmail.com"
+          autocomplete="off"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          matInput
+          formControlName="password"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <p>
+        <mat-checkbox formControlName="rememberMe">Remember Me</mat-checkbox>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="btn" [disabled]="loginForm.invalid" type="submit" mat-raised-button color="accent">
+        Login
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

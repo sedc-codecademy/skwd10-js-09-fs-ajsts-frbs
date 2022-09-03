@@ -1,0 +1,35 @@
+<mat-card>
+  <form [formGroup]="chipsForm">
+    <mat-form-field>
+      <mat-label>Full Name</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Jon Doe"
+        formControlName="fullName"
+        autocomplete="off"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-chip-list" appearance="fill">
+      <mat-chip-list #chipList></mat-chip-list>
+      <mat-chip
+        *ngFor="let thing of favoriteThings; let i = index"
+        [selectable]="chipSelectable"
+        [removable]="chipRemovable"
+        (removed)="onRemoveThing(i)"
+      >
+        {{ thing }}
+        <button matChipRemove *ngIf="chipRemovable">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        type="text"
+        autocomplete="off"
+        [matChipInputFor]="chipList"
+        (matChipInputTokenEnd)="addNewThing($event)"
+        formControlName="favoriteThings"
+      />
+    </mat-form-field>
+  </form>
+</mat-card>

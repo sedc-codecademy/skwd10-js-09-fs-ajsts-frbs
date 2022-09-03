@@ -1,0 +1,62 @@
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>Create a new user</mat-card-subtitle>
+  </mat-card-header>
+  <form
+    class="form"
+    [formGroup]="registerForm"
+    (ngSubmit)="onSubmitRegisterForm()"
+  >
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        type="text"
+        matInput
+        autocomplete="off"
+        placeholder="Ex. john.doe@outlook.com"
+        formControlName="email"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        type="password"
+        matInput
+        autocomplete="off"
+        formControlName="password"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Pricing</mat-label>
+      <mat-select formControlName="pricingType">
+        <mat-option *ngFor="let pricing of pricings" [value]="pricing">
+          {{ pricing | titlecase }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-radio-group class="radio-group" formControlName="gender">
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+      <mat-radio-button value="other">Other</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input autocomplete="off" matInput [matDatepicker]="picker" formControlName="birthdate" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="btn"
+      [disabled]="registerForm.invalid"
+      type="submit"
+    >
+      Register
+    </button>
+  </form>
+  <!-- <mat-card-content> Card content goes here. </mat-card-content>
+  <mat-card-actions> Card buttons go here. </mat-card-actions> -->
+</mat-card>
