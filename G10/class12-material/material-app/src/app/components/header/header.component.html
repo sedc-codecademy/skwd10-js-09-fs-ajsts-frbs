@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Material App</span>
+  <nav>
+    <mat-nav-list>
+      <mat-list-item
+        *ngFor="let item of navigationListItems"
+        [routerLink]="'/' + item"
+        routerLinkActive="active"
+      >
+        {{ item | titlecase }}
+      </mat-list-item>
+    </mat-nav-list>
+  </nav>
+</mat-toolbar>

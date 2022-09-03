@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Register</mat-card-title>
+    <mat-card-subtitle>Register a new user</mat-card-subtitle>
+  </mat-card-header>
+  <form [formGroup]="registerForm" (ngSubmit)="onFormSumbit()">
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="e.x jondoe@gmail.com"
+          type="text"
+          formControlName="email"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Pricing Tier</mat-label>
+        <mat-select formControlName="pricingTier">
+          <mat-option *ngFor="let tier of pricingTiers" [value]="tier">
+            {{ tier | titlecase }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <mat-radio-group formControlName="gender">
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button value="female">Female</mat-radio-button>
+        </mat-radio-group>
+        <mat-checkbox formControlName="subscribed"
+          >Subscribe to newsletter</mat-checkbox
+        >
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        mat-raised-button
+        color="primary"
+        class="btn"
+      >
+        Register
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>

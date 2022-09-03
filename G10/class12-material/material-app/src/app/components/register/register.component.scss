@@ -1,0 +1,16 @@
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.mat-radio-group {
+  width: 50%;
+}
+
+.mat-checkbox {
+  margin-left: 16px;
+}
