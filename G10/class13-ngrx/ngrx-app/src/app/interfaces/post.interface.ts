@@ -10,3 +10,8 @@ export interface NewPost {
   title: string;
   body: string;
 }
+
+export interface PostUpdates {
+  title: string;
+  body: string;
+}

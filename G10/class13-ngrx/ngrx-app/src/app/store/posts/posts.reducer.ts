@@ -1,6 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { Post } from 'src/app/interfaces/post.interface';
-import { fetchPosts, fetchPostsSuccess, postsError } from './posts.actions';
+import {
+  addPostSuccess,
+  fetchPosts,
+  fetchPostsSuccess,
+  postsError,
+  updatePostSuccess,
+} from './posts.actions';
 
 export enum PostStatus {
   PENDING = 'pending',
@@ -27,7 +33,17 @@ export const postsReducer = createReducer(
   on(fetchPostsSuccess, (state, { posts }) => ({
     ...state,
     posts: posts,
-    statsu: PostStatus.SUCCESS,
+    status: PostStatus.SUCCESS,
+  })),
+  on(addPostSuccess, (state, { post }) => ({
+    ...state,
+    posts: [...state.posts, post],
+  })),
+  on(updatePostSuccess, (state, { updatedPost }) => ({
+    ...state,
+    posts: state.posts.map((post) =>
+      post.id === updatedPost.id ? updatedPost : post
+    ),
   })),
   on(postsError, (state, { error }) => ({
     ...state,
