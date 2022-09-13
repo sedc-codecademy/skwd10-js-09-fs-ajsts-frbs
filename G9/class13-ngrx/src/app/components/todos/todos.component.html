@@ -1,0 +1,25 @@
+<section>
+  <h2>Todos</h2>
+  <form class="form-container" [formGroup]="todoForm" (ngSubmit)="onAddTodo()">
+    <div class="form-group">
+      <label for="todoInput">Add Todo</label>
+      <input autocomplete="off" type="text" id="todoInput" formControlName="text" />
+    </div>
+    <button [disabled]="todoForm.invalid">ADD</button>
+  </form>
+  <div class="todos-container">
+    <div
+      class="todo"
+      *ngFor="let todo of todos$ | async"
+      [ngClass]="todo.isFinished ? 'finished' : ''"
+    >
+      <p>{{ todo.text }}</p>
+      <div class="todo-actions">
+        <button *ngIf="!todo.isFinished" (click)="onFinishTodo(todo.id)">
+          ✅
+        </button>
+        <button (click)="onRemoveTodo(todo.id)">❌</button>
+      </div>
+    </div>
+  </div>
+</section>
