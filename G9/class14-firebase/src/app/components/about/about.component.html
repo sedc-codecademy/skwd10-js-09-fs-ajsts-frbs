@@ -1,0 +1,106 @@
+<div class="req-container">
+<ol class="req-list">
+  <li>Create two services. Auth service and Loan Service.</li>
+  <li>
+    The Auth service needs to have methods for register, login and logout. It
+    also needs to keep the current user state.
+    <br>
+    For the current user state data
+    type, use an interface called User, and it will have the email of the user.
+  </li>
+  <li>
+    <p>The Loan service needs to have methods for</p>
+    <ul>
+      <li>Create new loan</li>
+      <li>Get loan by ID</li>
+      <li>Get all loans</li>
+      <li>Update Loan Status</li>
+    </ul>
+  </li>
+  <li>
+    <p>The loan interface needs to have the following properties</p>
+    <ul>
+      <li>id</li>
+      <li>user (Name of the person who applied for the loan)</li>
+      <li>amount</li>
+      <li>interest rate</li>
+      <li>request date</li>
+      <li>approval date (set when you approve the loan)</li>
+      <li>
+        status (Separate enum for this, OPEN -> SENT_FOR_APPROVAL -> APPROVED)
+      </li>
+    </ul>
+  </li>
+  <li>Create two feature modules, Auth and Loan Service</li>
+  <li>
+    <p>The Auth module has the following components</p>
+    <ul>
+      <li>login page (Containing a form for signing in) email/password</li>
+      <li>
+        register page. (Containing a form for registering)
+        email/username/password
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>The Loan module has the following components</p>
+    <ul>
+      <li>
+        <p>Loan List Page (Showing a list of all loans)</p>
+        <ul>
+          <li>
+            Show only User, amount and status in this list. You can use either
+            cards or a table.
+          </li>
+          <li>
+            Add a dynamic class to each item in the list based on the loan
+            status. Style accordingly.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>Loan Details Page (Separate page for a single loan)</p>
+        <ul>
+          <li>
+            Navigate to this page when clicking on the appropriate loan in the
+            list
+          </li>
+          <li>
+            Render amount with a EUR sign, render the user name in uppercase,
+            render the dates in this format (Sep 15, 2022, 9:03:01 AM)
+          </li>
+          <li>
+            This page needs to render a [Send for approval] button if the status
+            of the loan is NEW.
+          </li>
+          <li>
+            Render an [Approve] button if the status of the loan is
+            SENT_FOR_APPROVAL
+          </li>
+          <li>Don't render any buttons if the loan is approved.</li>
+        </ul>
+      </li>
+      <li>
+        <p>New Loan Page (Containing a form to create a new loan)</p>
+      </li>
+    </ul>
+  </li>
+  <li>Setup routing with lazy loading towards the two modules</li>
+  <li>
+    <p>
+      Create a header component directly at root level. Add navigation to it.
+    </p>
+    <ul>
+      <li>
+        If the user is logged in, show navigation options for Loan List, Add
+        Loan, Logout.
+      </li>
+      <li>If the user is not logged in, show options for Login, Register</li>
+    </ul>
+  </li>
+  <li>
+    Add a guard so that the user cannot navigate to the Loan module routes if
+    he's not logged in.
+  </li>
+</ol>
+</div>

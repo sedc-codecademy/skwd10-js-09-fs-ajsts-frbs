@@ -1,0 +1,14 @@
+.req-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.req-container {
+    height: 90vh;
+}
+
+li {
+    width: 60%;
+}

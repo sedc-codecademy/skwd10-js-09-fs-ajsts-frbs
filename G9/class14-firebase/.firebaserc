@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "movies-project-878b8": {
+      "hosting": {
+        "services-v2": [
+          "movies-project-878b8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "movies-project-878b8"
+  }
+}
